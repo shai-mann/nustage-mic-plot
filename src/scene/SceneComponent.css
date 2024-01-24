@@ -14,9 +14,9 @@
 }
 
 .actor-list {
-  color: #333; /* Darken the actor names */
-  font-weight: bold; /* Make actor names bold */
-  font-size: 16px; /* Increase font size for actor names */
+  color: #333;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 .actor-input {
@@ -27,4 +27,22 @@
   width: calc(100% - 16px);
   max-width: 300px;
   color: #333;
+}
+
+.actor-input input {
+  border: none;
+  outline: none;
+  width: calc(100% - 10px);
+  padding: 5px;
+}
+
+.actor-input button {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.actor-input button:hover {
+  background-color: #e0e0e0;
 }

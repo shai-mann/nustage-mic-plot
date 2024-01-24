@@ -1,9 +1,10 @@
 // SceneComponent.tsx
 import React, { useState } from 'react';
 import './SceneComponent.css';
+import { Scene } from '../App';
 
 interface SceneComponentProps {
-  scene: { number: number; actors: string[] };
+  scene: Scene;
   onAddActor: (actorName: string) => void;
 }
 
@@ -26,7 +27,7 @@ const SceneComponent: React.FC<SceneComponentProps> = ({ scene, onAddActor }) =>
 
   return (
     <div className="component">
-      <h2 className="scene-title">Scene {scene.number}</h2>
+      <h2 className="scene-title">{scene.name}</h2>
       <p className="actor-list">{scene.actors.join(', ')}</p>
       <input
         type="text"
