@@ -1,6 +1,7 @@
 // App.tsx
 import React, { useState } from 'react';
 import SceneComponent from './scene/SceneComponent';
+import MicPlot from './plot/MicPlot';
 import './App.css';
 
 export interface Scene {
@@ -30,25 +31,33 @@ const App: React.FC = () => {
 
   return (
     <div className="container">
-      <div className="header">
-        <h1 className="title">Scene-by-Scene Breakdown</h1>
-        <div className="header-controls">
-          <input
-            type="text"
-            value={newSceneName}
-            onChange={(e) => setNewSceneName(e.target.value)}
-            placeholder="Scene Name"
-            className="scene-name-input"
-          />
-          <button className="add-button" onClick={addScene}>
-            Add Scene
-          </button>
+      <div className="split-container">
+        <div className="left-panel">
+          <div className="header">
+            <h1 className="title">Scenes</h1>
+            <div className="header-controls">
+              <input
+                type="text"
+                value={newSceneName}
+                onChange={(e) => setNewSceneName(e.target.value)}
+                placeholder="Scene Name"
+                className="scene-name-input"
+              />
+              <button className="add-button" onClick={addScene}>
+                Add Scene
+              </button>
+            </div>
+          </div>
+          <div className="scenes">
+            {scenes.map((scene, index) => (
+              <SceneComponent key={index} scene={scene} onAddActor={(actorName) => addActor(index, actorName)} />
+            ))}
+          </div>
         </div>
-      </div>
-      <div className="scenes">
-        {scenes.map((scene, index) => (
-          <SceneComponent key={index} scene={scene} onAddActor={(actorName) => addActor(index, actorName)} />
-        ))}
+        <div className="divider-line"></div>
+        <div className="right-panel">
+          <MicPlot scenes={scenes} />
+        </div>
       </div>
     </div>
   );

@@ -3,6 +3,26 @@
   padding: 20px;
 }
 
+.split-container {
+  display: flex;
+}
+
+.left-panel {
+  width: 39%;
+}
+
+.right-panel {
+  width: 60%;
+}
+
+.divider-line {
+  width: 3px;
+  background-color: #ccc;
+  height: 100%;
+  margin: 0 20px; /* Adjust the margin as needed */
+}
+
+/* Preserve existing stylings */
 .header {
   display: flex;
   justify-content: space-between;
@@ -11,6 +31,7 @@
 
 .title {
   margin: 0;
+  font-size: 24px; /* Adjust the font size as needed */
 }
 
 .header-controls {
@@ -26,7 +47,7 @@
 }
 
 .add-button {
-  padding: 10px;
+  padding: 8px;
   border-radius: 5px;
   cursor: pointer;
 }

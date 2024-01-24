@@ -1,0 +1,27 @@
+.mic-plot {
+  padding: 20px;
+}
+
+.mic-controls {
+  margin-bottom: 15px;
+}
+
+.mic-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.mic-table th,
+.mic-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.mic-table th {
+  background-color: #f2f2f2;
+}
+
+.mic-table tbody tr:hover {
+  background-color: #f5f5f5;
+}
