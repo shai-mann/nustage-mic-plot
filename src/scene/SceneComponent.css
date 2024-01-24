@@ -1,32 +1,30 @@
 /* SceneComponent.css */
 .component {
-    border: 1px solid black;
-    padding: 20px;
-    border-radius: 10px;
-    width: 300px;
-  }
-  
-  .scene-title {
-    margin-bottom: 15px;
-  }
-  
-  .actor-list {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .actor-input {
-    margin-top: 10px;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  .add-button {
-    margin-top: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #4CAF50;
-    color: white;
-  }
-  
+  border: 1px solid #e0e0e0;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.scene-title {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.actor-list {
+  color: #333; /* Darken the actor names */
+  font-weight: bold; /* Make actor names bold */
+  font-size: 16px; /* Increase font size for actor names */
+}
+
+.actor-input {
+  margin-top: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: calc(100% - 16px);
+  max-width: 300px;
+  color: #333;
+}

@@ -3,13 +3,24 @@
   padding: 20px;
 }
 
-.title {
+.header {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.button {
+.title {
+  margin: 0;
+}
+
+.add-button {
   padding: 10px;
   border-radius: 5px;
-  margin-top: 20px;
   cursor: pointer;
+}
+
+.scenes {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

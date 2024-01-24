@@ -1,3 +1,4 @@
+// App.tsx
 import React, { useState } from 'react';
 import SceneComponent from './scene/SceneComponent';
 import './App.css';
@@ -25,15 +26,17 @@ const App: React.FC = () => {
 
   return (
     <div className="container">
-      <h1 className="title">Scene-by-Scene Breakdown</h1>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+      <div className="header">
+        <h1 className="title">Scene-by-Scene Breakdown</h1>
+        <button className="add-button" onClick={addScene}>
+          Add Scene
+        </button>
+      </div>
+      <div className="scenes">
         {scenes.map((scene, index) => (
           <SceneComponent key={index} scene={scene} onAddActor={(actorName) => addActor(index, actorName)} />
         ))}
       </div>
-      <button className="button" onClick={addScene}>
-        Add Scene
-      </button>
     </div>
   );
 };
