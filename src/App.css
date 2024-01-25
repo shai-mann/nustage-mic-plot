@@ -1,0 +1,23 @@
+/* App.css */
+.container {
+  padding: 20px;
+}
+
+.split-container {
+  display: flex;
+}
+
+.left-panel {
+  width: 39%;
+}
+
+.right-panel {
+  width: 60%;
+}
+
+.divider-line {
+  display: inline-block;
+  width: 2px;
+  background-color: #333333;
+  margin: 0 10px;
+}
