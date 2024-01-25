@@ -1,14 +1,24 @@
-.mic-plot {
-  padding: 20px;
-}
-
 .mic-controls {
   margin-bottom: 15px;
+}
+
+.mic-header {
+  margin-top: 0;
+}
+
+.num-mic-input {
+  margin-left: 5px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 45px;
 }
 
 .mic-table {
   border-collapse: collapse;
   width: 100%;
+  white-space: nowrap;
 }
 
 .mic-table th,

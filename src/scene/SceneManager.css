@@ -22,9 +22,13 @@
 }
 
 .add-button {
-  padding: 8px;
+  padding: 10px 15px;
+  background-color: #4f4f4f;
+  color: #ffffff;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
 }
 
 .scenes {

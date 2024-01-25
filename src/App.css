@@ -16,8 +16,8 @@
 }
 
 .divider-line {
-  width: 3px;
-  background-color: #ccc;
-  height: 100%;
-  margin: 0 20px;
+  display: inline-block;
+  width: 2px;
+  background-color: #333333;
+  margin: 0 10px;
 }

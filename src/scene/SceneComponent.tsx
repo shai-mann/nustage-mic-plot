@@ -1,39 +1,78 @@
 // SceneComponent.tsx
-import React, { useState } from 'react';
-import './SceneComponent.css';
-import { Scene } from '../App';
+import React, { useState } from "react";
+import "./SceneComponent.css";
+import { Scene } from "../App";
 
 interface SceneComponentProps {
   scene: Scene;
-  onAddActor: (actorName: string) => void;
-  onDeleteActor: (actorname: string) => void;
+  onSceneChange: (scene: Partial<Scene>) => void;
 }
 
-const SceneComponent: React.FC<SceneComponentProps> = ({ scene, onAddActor, onDeleteActor }) => {
-  const [actorName, setActorName] = useState('');
+const SceneComponent: React.FC<SceneComponentProps> = ({
+  scene,
+  onSceneChange,
+}) => {
+  const [actorName, setActorName] = useState("");
+  const [editable, setEditable] = useState(false);
+  const [editedSceneName, setEditedSceneName] = useState(scene.name);
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      handleAddActor();
-    }
+  const createHandleKeyDown = (func: () => void) => {
+    return (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        func();
+      }
+    };
   };
 
   const handleAddActor = () => {
-    if (actorName.trim() !== '') {
-      onAddActor(actorName);
-      setActorName('');
+    if (actorName.trim() !== "") {
+      onSceneChange({ actors: scene.actors.concat(actorName) });
+      setActorName("");
     }
+  };
+
+  const handleDeleteActor = (actor: string) => {
+    onSceneChange({ actors: scene.actors.filter((a) => a !== actor) });
+  };
+
+  const handleToggleEdit = () => {
+    setEditable(!editable);
+  };
+
+  const handleSceneNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEditedSceneName(e.target.value);
+  };
+
+  const handleEditSceneName = () => {
+    onSceneChange({ name: editedSceneName });
+    setEditable(false);
   };
 
   return (
     <div className="component">
-      <h2 className="scene-title">{scene.name}</h2>
+      <div className="scene-title" onClick={handleToggleEdit}>
+        {editable ? (
+          <input
+            type="text"
+            value={editedSceneName}
+            onChange={handleSceneNameChange}
+            onBlur={handleEditSceneName}
+            onKeyDown={createHandleKeyDown(handleEditSceneName)}
+            autoFocus
+          />
+        ) : (
+          scene.name
+        )}
+      </div>
       <div className="actor-list">
         {scene.actors.map((actor) => (
           <div key={actor} className="actor-tag">
             {actor}
-            <button onClick={() => onDeleteActor(actor)} className="delete-button">
+            <button
+              onClick={() => handleDeleteActor(actor)}
+              className="delete-button"
+            >
               X
             </button>
           </div>
@@ -43,7 +82,7 @@ const SceneComponent: React.FC<SceneComponentProps> = ({ scene, onAddActor, onDe
         type="text"
         value={actorName}
         onChange={(e) => setActorName(e.target.value)}
-        onKeyDown={handleKeyDown}
+        onKeyDown={createHandleKeyDown(handleAddActor)}
         placeholder="Add actor"
         className="actor-input"
       />

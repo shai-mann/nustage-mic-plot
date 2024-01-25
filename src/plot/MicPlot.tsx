@@ -9,7 +9,7 @@ interface MicPlotProps {
 }
 
 const MicPlot: React.FC<MicPlotProps> = ({ scenes }) => {
-  const [numMics, setNumMics] = useState(1);
+  const [numMics, setNumMics] = useState(5);
 
   const data = useMemo(() => {
     // Your algorithm to populate data based on scenes and numMicrophones
@@ -29,8 +29,8 @@ const MicPlot: React.FC<MicPlotProps> = ({ scenes }) => {
 
   const columns = useMemo(() => {
     // Define the columns based on scenes
-    const sceneColumns = scenes.map((_, sceneIndex) => ({
-      Header: `Scene ${sceneIndex + 1}`,
+    const sceneColumns = scenes.map((scene, sceneIndex) => ({
+      Header: scene.name,
       accessor: `scene${sceneIndex + 1}`,
     }));
 
@@ -44,12 +44,13 @@ const MicPlot: React.FC<MicPlotProps> = ({ scenes }) => {
 
   return (
     <div className="mic-plot">
-      <h2>Mic Plot</h2>
+      <h2 className="mic-header">Mic Plot</h2>
       <div className="mic-controls">
         <label htmlFor="numMicrophones">Number of Mics:</label>
         <input
           type="number"
           id="numMicrophones"
+          className="num-mic-input"
           value={numMics}
           onChange={(e) => setNumMics(parseInt(e.target.value, 10))}
           min="1"

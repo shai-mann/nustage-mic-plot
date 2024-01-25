@@ -16,7 +16,6 @@ const SceneManager: FC<SceneManagerProps> = ({ scenes, setScenes }) => {
     const sceneName =
       newSceneName.trim() !== "" ? newSceneName : `Scene ${scenes.length + 1}`;
     const newScene: Scene = {
-      number: scenes.length + 1,
       name: sceneName,
       actors: [],
     };
@@ -24,20 +23,13 @@ const SceneManager: FC<SceneManagerProps> = ({ scenes, setScenes }) => {
     setNewSceneName("");
   };
 
-  const addActor = (sceneIndex: number, actorName: string) => {
+  const onSceneChange = (index: number, scene: Partial<Scene>) => {
     setScenes((prevScenes) => {
       const updatedScenes = [...prevScenes];
-      updatedScenes[sceneIndex].actors.push(actorName);
-      return updatedScenes;
-    });
-  };
-
-  const deleteActor = (sceneIndex: number, actorName: string) => {
-    setScenes((prevScenes) => {
-      const updatedScenes = [...prevScenes];
-      updatedScenes[sceneIndex].actors = updatedScenes[
-        sceneIndex
-      ].actors.filter((a) => a !== actorName);
+      updatedScenes[index] = {
+        ...prevScenes[index],
+        ...scene,
+      };
       return updatedScenes;
     });
   };
@@ -64,8 +56,7 @@ const SceneManager: FC<SceneManagerProps> = ({ scenes, setScenes }) => {
           <SceneComponent
             key={index}
             scene={scene}
-            onAddActor={(actorName) => addActor(index, actorName)}
-            onDeleteActor={(actorName) => deleteActor(index, actorName)}
+            onSceneChange={(scene) => onSceneChange(index, scene)}
           />
         ))}
       </div>

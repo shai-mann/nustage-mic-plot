@@ -5,7 +5,6 @@ import "./App.css";
 import SceneManager from "./scene/SceneManager";
 
 export interface Scene {
-  number: number;
   name: string;
   actors: string[];
 }
