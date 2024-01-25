@@ -6,9 +6,10 @@ import { Scene } from '../App';
 interface SceneComponentProps {
   scene: Scene;
   onAddActor: (actorName: string) => void;
+  onDeleteActor: (actorname: string) => void;
 }
 
-const SceneComponent: React.FC<SceneComponentProps> = ({ scene, onAddActor }) => {
+const SceneComponent: React.FC<SceneComponentProps> = ({ scene, onAddActor, onDeleteActor }) => {
   const [actorName, setActorName] = useState('');
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -28,7 +29,16 @@ const SceneComponent: React.FC<SceneComponentProps> = ({ scene, onAddActor }) =>
   return (
     <div className="component">
       <h2 className="scene-title">{scene.name}</h2>
-      <p className="actor-list">{scene.actors.join(', ')}</p>
+      <div className="actor-list">
+        {scene.actors.map((actor) => (
+          <div key={actor} className="actor-tag">
+            {actor}
+            <button onClick={() => onDeleteActor(actor)} className="delete-button">
+              X
+            </button>
+          </div>
+        ))}
+      </div>
       <input
         type="text"
         value={actorName}

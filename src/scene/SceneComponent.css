@@ -46,3 +46,27 @@
 .actor-input button:hover {
   background-color: #e0e0e0;
 }
+
+.actor-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.actor-tag {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.delete-button {
+  margin-left: 5px;
+  cursor: pointer;
+  background-color: #ff6666;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 3px 5px;
+}
